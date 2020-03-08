@@ -23,8 +23,6 @@ const bar_width = 10
 const sketch = (p) => {
 
 
-	let op = "bruh";
-
 	p.setup = () => {
 		// Create the canvas
 		let height = p.windowHeight - (p.windowHeight / 4);
