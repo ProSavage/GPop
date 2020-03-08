@@ -5,6 +5,32 @@ body {
 	background: transparent;
 }
 
+.boxedleft {
+	border: 1px solid black;
+	width: 30%;
+	position: absolute;
+	left: 19%;
+	top: 0%;
+	padding-left: 4px;
+}
+
+.boxedright {
+	border: 1px solid black;
+	width: 30%;
+	position: absolute;
+	left: 51%;
+	top: 0%;
+	padding-left: 4px;
+}
+
+.btn-group button {
+	border: 1px solid green; /* Green border */
+	color: white; /* White text */
+	padding: 10px 24px; /* Some padding */
+	cursor: pointer; /* Pointer/hand icon */
+	display: block; /* Make the buttons appear below each other */
+}
+
 /* Use OS default fonts */
 body {
 	font-family: -apple-system,
