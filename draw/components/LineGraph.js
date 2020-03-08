@@ -13,11 +13,6 @@ class LineGraph {
 	rollover(px, py) {
 		let base = 0;
 		this.variants.forEach(element => {
-			console.log("debug");
-			console.log(py);
-			console.log(base);
-			console.log(element.height);
-			console.log(this.y);
 			element.over = px > this.x && px < this.x + this.width && this.y + element.height + base < py && this.y + base > py;
 			base += element.height
 		})
