@@ -129,7 +129,7 @@ module.exports = {
 	getAllSamples: function getAllSamples() {
 		let query = "SELECT id, name, mother_sample_id, father_sample_id FROM sample";
 		return makePromise(query);
-	}
+	},
 
 	getAllChromosomes: function getAllChromosomes() {
 		let query = "SELECT id, name, size FROM chromosome ORDER BY name;";
@@ -181,7 +181,7 @@ module.exports = {
 			" WHERE sample_id = " + sample_id +
 			"  AND chromosome_id = " + chromosome_id;
 		return makePromise(query);
-	}
+	},
 
 	getAllCopyNumberVariantsBySampleIDAndChromosome: function getAllCopyNumberVariantsBySampleIDAndChromosome(sample_id, chromosome_id) {
 		let query = "SELECT id, start_position, reference_copy_count, variant_copy_count, sample_id " +
@@ -190,5 +190,5 @@ module.exports = {
 		"  AND chromosome_id = " + chromosome_id;
 		return makePromise(query);
 	}
-}
+};
 
