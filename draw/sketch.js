@@ -3,6 +3,8 @@
 const { getFillColor } = require('./draw/colorController');
 // import LineGraph from "./components/LineGraph";
 const lineGraphLib = require('./draw/components/LineGraph');
+const dnaLabelLib = require('./draw/components/DNALabel');
+
 
 
 // This file is required by the index.html file and will
@@ -20,41 +22,37 @@ console.log('logging')
 const sketch = (p) => {
 
 
-  let op = [];
+	let op = "bruh";
 
-  p.setup = () => {
-    // Create the canvas
-    let height = p.windowHeight - (p.windowHeight / 4);
-    p.createCanvas(2000, p.windowHeight);
-    for (let i = 0; i < 1000; i++) {
-      let bruh = Math.round(Math.random() * p.windowWidth);
-      let okay = Math.round(Math.random() * 2);
-      if (okay < 1) {
-          bruh = -1 * bruh
-      }
-      op[i] = new lineGraphLib.linegraph(p, bruh, height, 10, 100, "Bruh");
-    }
+	p.setup = () => {
+		// Create the canvas
+		let height = p.windowHeight - (p.windowHeight / 4);
+		p.createCanvas(2000, p.windowHeight);
 
-  };
-
-
-  p.draw = () => {
-    p.clear();
-    let height = p.windowHeight - (p.windowHeight / 4);
-    p.line(0, height, 2000, height);
-    for (let i = 0; i < 1000; i++) {
-      op[i].display();
-      op[i].rollover(p.mouseX, p.mouseY);
-    }
-
-  };
+	};
 
 
 
-  p.windowResized = () => {
-    p.resizeCanvas(p.windowWidth, p.windowHeight);
-  }
+	p.draw = () => {
+		p.clear();
+		let height = p.windowHeight - (p.windowHeight / 4);
+		p.strokeWeight(25);
+		p.stroke(p.color(190,235, 233));
+		p.line(0, height, 2000, height);
+		let dna = new dnaLabelLib.dnalabel(p, p.windowWidth / 2 + 100, height, "GENE 1");
+		dna.display();
+		let linegraph = new lineGraphLib.linegraph(p, p.windowWidth / 2, height, 10, -100, "Bruh");
+		linegraph.rollover(p.mouseX, p.mouseY);
+		linegraph.display();
+
+
+	};
+
+
+
+	p.windowResized = () => {
+		p.resizeCanvas(p.windowWidth, p.windowHeight);
+	}
 };
-
 //Instantiates P5 sketch to keep it out of the global scope.
 const app = new p5(sketch, 'container');
