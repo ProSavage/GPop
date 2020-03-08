@@ -4,7 +4,7 @@ const {getFillColor} = require('./draw/colorController');
 // import LineGraph from "./components/LineGraph";
 const lineGraphLib = require('./draw/components/LineGraph');
 const dnaLabelLib = require('./draw/components/DNALabel');
-
+const gapLabelLib = require('./draw/components/GapLabel');
 
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
@@ -46,14 +46,15 @@ const sketch = (p) => {
 		];
 		let dna = new dnaLabelLib.dnalabel(p, p.windowWidth / 2 + 100, height, 12 * bar_width, "GENE 1");
 		dna.display();
-		let count = 9;
+		let gap = new gapLabelLib.gaplabel(p, p.windowWidth / 2 - 100, height, 2*bar_width, "12345", "13456");
+		gap.display();
+    let count = 9;
 		for (let i = 0; i < 10; i++) {
 			let linegraph = new lineGraphLib.linegraph(p, ((50 * count) + p.windowWidth / 2), height, bar_width, variants);
 			linegraph.rollover(p.mouseX, p.mouseY);
 			linegraph.display();
 			count--;
 		}
-
 	};
 
 
