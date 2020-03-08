@@ -1,10 +1,9 @@
 'use strict';
 
-const { getFillColor } = require('./draw/colorController');
+const {getFillColor} = require('./draw/colorController');
 // import LineGraph from "./components/LineGraph";
 const lineGraphLib = require('./draw/components/LineGraph');
 const dnaLabelLib = require('./draw/components/DNALabel');
-
 
 
 // This file is required by the index.html file and will
@@ -21,7 +20,7 @@ const bar_width = 10
 
 //Starting out sketch and
 //injecting p5, as the param p, into our sketch function.
-  const sketch = (p) => {
+const sketch = (p) => {
 
 
 	let op = "bruh";
@@ -34,27 +33,28 @@ const bar_width = 10
 	};
 
 
-
 	p.draw = () => {
 		p.clear();
 		let height = p.windowHeight - (p.windowHeight / 4);
 		p.strokeWeight(25);
-		p.stroke(p.color(190,235, 233));
-		p.line(0, height, 2000, height);
+		p.stroke(p.color(190, 235, 233));
+		p.line(0, height + 13, 2000, height + 13);
 		var variants = [
-			{ height: -30, name: "3" },
-			{ height: -56, name: "5" },
-			{ height: -12, name: "6" }
+			{height: -30, name: "3"},
+			{height: -56, name: "5"},
+			{height: -12, name: "6"}
 		];
-		let dna = new dnaLabelLib.dnalabel(p, p.windowWidth / 2 + 100, height, 12*bar_width, "GENE 1");
+		let dna = new dnaLabelLib.dnalabel(p, p.windowWidth / 2 + 100, height, 12 * bar_width, "GENE 1");
 		dna.display();
-		let linegraph = new lineGraphLib.linegraph(p, p.windowWidth / 2, height, bar_width, variants);
-		linegraph.rollover(p.mouseX, p.mouseY);
-		linegraph.display();
-
+		let count = 9;
+		for (let i = 0; i < 10; i++) {
+			let linegraph = new lineGraphLib.linegraph(p, ((50 * count) + p.windowWidth / 2), height, bar_width, variants);
+			linegraph.rollover(p.mouseX, p.mouseY);
+			linegraph.display();
+			count--;
+		}
 
 	};
-
 
 
 	p.windowResized = () => {
