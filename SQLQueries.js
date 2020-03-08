@@ -46,7 +46,7 @@ module.exports = {
 
 	loadSample: function loadSample(name, mother_sample_id, father_sample_id) {
 		let query = "INSERT INTO sample (name, mother_sample_id, father_sample_id) VALUES " +
-			    " (" + name + ", " + mother_sample_id + ", " + father_sample_id + ");";
+			    " ('" + name + "', " + mother_sample_id + ", " + father_sample_id + ");";
 		return makePromise(query);
 	},
 
@@ -126,6 +126,11 @@ module.exports = {
 		return makePromise(query);
 	},
 
+	getAllSamples: function getAllSamples() {
+		let query = "SELECT id, name, mother_sample_id, father_sample_id FROM sample";
+		return makePromise(query);
+	}
+
 	getAllChromosomes: function getAllChromosomes() {
 		let query = "SELECT id, name, size FROM chromosome ORDER BY name;";
 		return makePromise(query);
@@ -169,12 +174,20 @@ module.exports = {
 		return makePromise(query);
 	},
 
-	getAllShortVariants: function getAllShortVariants(sample_id, chromosome_id) {
+	getAllShortVariantsBySampleIDAndChromosome: function getAllShortVariantsBySampleIDAndChromosome(sample_id, chromosome_id) {
 		let query = "SELECT id, start_position, end_position, reference_sequence," +
 			"reference_read_count, variant_sequence, variant_read_count" +
 			" FROM short_variant" +
 			" WHERE sample_id = " + sample_id +
 			"  AND chromosome_id = " + chromosome_id;
+		return makePromise(query);
+	}
+
+	getAllCopyNumberVariantsBySampleIDAndChromosome: function getAllCopyNumberVariantsBySampleIDAndChromosome(sample_id, chromosome_id) {
+		let query = "SELECT id, start_position, reference_copy_count, variant_copy_count, sample_id " +
+			" FROM copy_number_variant " +
+		" WHERE sample_id = " + sample_id +
+		"  AND chromosome_id = " + chromosome_id;
 		return makePromise(query);
 	}
 }
