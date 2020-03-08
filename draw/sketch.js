@@ -48,7 +48,7 @@ const sketch = (p) => {
 		dna.display();
 		let gap = new gapLabelLib.gaplabel(p, p.windowWidth / 2 - 100, height, 2*bar_width, "12345", "13456");
 		gap.display();
-    let count = 9;
+    	let count = 9;
 		for (let i = 0; i < 10; i++) {
 			let linegraph = new lineGraphLib.linegraph(p, ((50 * count) + p.windowWidth / 2), height, bar_width, variants);
 			linegraph.rollover(p.mouseX, p.mouseY);
