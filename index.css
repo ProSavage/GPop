@@ -6,24 +6,24 @@ body {
 }
 
 .boxedleft {
-	border: 1px solid black;
 	width: 30%;
-	position: absolute;
+	position: fixed;
 	left: 19%;
 	top: 0%;
 	padding-left: 4px;
 }
 
 .boxedright {
-	border: 1px solid black;
 	width: 30%;
-	position: absolute;
+	position: fixed;
 	left: 51%;
 	top: 0%;
 	padding-left: 4px;
 }
 
 .btn-group button {
+	position: fixed;
+	right: 90px;
 	border: 1px solid green; /* Green border */
 	color: white; /* White text */
 	padding: 10px 24px; /* Some padding */
