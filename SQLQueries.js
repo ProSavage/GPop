@@ -29,8 +29,46 @@ function makePromise(query) {
 }
 
 module.exports = {
-	getAllChromosomes: function getAllChromosomes() {
-		let query = "SELECT * FROM chromosome;";
+	getChromosomes: function getChromosomes() {
+		let query = "SELECT id, name, size FROM chromosome ORDER BY name;";
+		return makePromise(query);
+	},
+
+	getExons: function getExons() {
+		let query = "SELECT id, chromosome_id, start_position, end_position FROM exon " +
+		            " ORDER BY start_position;";
+		return makePromise(query);
+	},
+
+	getExons: function getExons(chromosome_id) {
+		let query = "SELECT id, start_position, end_position FROM exon " +
+			        "WHERE chromosome_id = " + chromosome_id + " ORDER BY start_position;";
+		return makePromise(query);
+	},
+
+	getExons: function getExons(chromosome_id, start_position) {
+		let query = "SELECT id, end_position FROM exon " +
+			         "WHERE chromosome_id = " + chromosome_id +
+			         "  AND start_position = " + start_position + " ORDER BY start_position;";
+		return makePromise(query);
+	},
+
+	getGenes: function getGenes() {
+		let query =  "SELECT id, chromosome_id, name, start_position, end_position " +
+			         " FROM gene ORDER BY start_position;";
+		return makePromise(query);
+	},
+
+	getGenes: function getGenes(chromosome_id) {
+		let query = "SELECT id, name, start_position, end_position FROM gene " +
+			        " WHERE chromosome_id  = " + chromosome_id + " ORDER BY start_position;";
+		return makePromise(query)
+	},
+
+	getGenes: function getGenes(chromosome_id, start_position) {
+		let query = "SELECT  id, name, end_position FROM gene WHERE chromosome_id = " +
+			        chromosome_id + " AND start_position = " + start_position +
+			        " ORDER  BY start_position;"
 		return makePromise(query);
 	},
 
