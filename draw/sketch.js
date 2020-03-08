@@ -41,7 +41,12 @@ const sketch = (p) => {
 		p.line(0, height, 2000, height);
 		let dna = new dnaLabelLib.dnalabel(p, p.windowWidth / 2 + 100, height, "GENE 1");
 		dna.display();
-		let linegraph = new lineGraphLib.linegraph(p, p.windowWidth / 2, height, 10, -100, "Bruh");
+		var variants = [
+			{ height: -30, name: "3" },
+			{ height: -56, name: "5" },
+			{ height: -12, name: "6" }
+		];
+		let linegraph = new lineGraphLib.linegraph(p, p.windowWidth / 2, height, 10, variants);
 		linegraph.rollover(p.mouseX, p.mouseY);
 		linegraph.display();
 

@@ -5,13 +5,29 @@ body {
 	background: transparent;
 }
 
+.boxedleft {
+	border: 1px solid black;
+	width: 30%;
+	position: absolute;
+	left: 19%;
+	top: 0%;
+	padding-left: 4px;
+}
+
+.boxedright {
+	border: 1px solid black;
+	width: 30%;
+	position: absolute;
+	left: 51%;
+	top: 0%;
+	padding-left: 4px;
+}
+
 .btn-group button {
-	background-color: #4CAF50; /* Green background */
 	border: 1px solid green; /* Green border */
 	color: white; /* White text */
 	padding: 10px 24px; /* Some padding */
 	cursor: pointer; /* Pointer/hand icon */
-	width: 50%; /* Set a width if needed */
 	display: block; /* Make the buttons appear below each other */
 }
 

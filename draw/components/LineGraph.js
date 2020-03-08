@@ -1,13 +1,11 @@
 
 class LineGraph {
-	constructor(p, x, y, width, height, name) {
+	constructor(p, x, y, width, variants) {
 		this.p = p;
 		this.x = x;
 		this.y = y;
-		this.height = height;
 		this.width = width;
-		this.radius = height / 2;
-		this.name = name;
+		this.variants = variants;
 		this.over = false;
 	}
 
@@ -18,15 +16,24 @@ class LineGraph {
 
 	// Display the Bubble
 	display() {
+		var color_a = this.p.color(255, 182, 185);
+		var color_b = this.p.color(182, 185, 255);
 		this.p.stroke(0);
 		this.p.strokeWeight(0.8);
-		this.p.fill(this.p.color(255, 182, 185));
-		this.p.rect(this.x, this.y, this.width, this.height);
-		if (this.over) {
-			this.p.fill(0);
-			this.p.rect(this.x, this.y, 10, 100)
-			this.p.text(this.name, this.x, this.y + this.radius + 20);
-		}
+		var color = 0;
+		var base = 0;
+		this.variants.forEach(element => {
+			if(color) this.p.fill(color_a)
+			else this.p.fill(color_b);
+			color = !color;
+			this.p.rect(this.x, this.y + base, this.width, element.height);
+			base += element.height;
+			if (this.over) {
+				this.p.fill(0);
+				this.p.rect(this.x, this.y, 10, 100)
+				this.p.text(element.name, this.x, this.y + this.radius + 20);
+			}
+		});
 	}
 }
 
