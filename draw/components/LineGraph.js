@@ -20,16 +20,18 @@ class LineGraph {
 
 	// Display the Bubble
 	display() {
-		let color_a = this.p.color(255, 182, 185);
-		let color_b = this.p.color(182, 185, 255);
 		let bruh = "Gene #: 1333334 \nReference Start: 1000000000000 \nReference Nucleotides: AAAAAAATGCCC \n# of Variants: 10";
 		this.p.stroke(0);
 		let color = 0;
 		let base = 0;
 		let height = 0;
 		this.variants.forEach(element => {
-			if(color) this.p.fill(color_a);
-			else this.p.fill(color_b);
+			if(color) this.p.fill(this.p.color(255, 182, 185));
+			else this.p.fill(this.p.color(182, 185, 255));
+			if(element.copy) {
+				if(color)	this.p.fill(this.p.color(255, 82, 185));
+				else this.p.fill(this.p.color(182, 85, 255));
+			}
 			color = !color;
 			this.p.strokeWeight(0);
 			this.p.rect(this.x, this.y + base, this.width, element.height);
