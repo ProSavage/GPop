@@ -3,6 +3,8 @@
 const { getFillColor } = require('./draw/colorController');
 // import LineGraph from "./components/LineGraph";
 const lineGraphLib = require('./draw/components/LineGraph');
+const dnaLabelLib = require('./draw/components/DNALabel');
+
 
 
 // This file is required by the index.html file and will
@@ -20,15 +22,13 @@ console.log('logging')
 const sketch = (p) => {
 
 
-	let op = [];
+	let op = "bruh";
 
 	p.setup = () => {
 		// Create the canvas
 		let height = p.windowHeight - (p.windowHeight / 4);
 		p.createCanvas(2000, p.windowHeight);
-		for (let i = 0; i < 1; i++) {
 
-		}
 	};
 
 
@@ -41,11 +41,10 @@ const sketch = (p) => {
 		p.line(0, height, 2000, height);
 		let dna = new dnaLabelLib.dnalabel(p, p.windowWidth / 2 + 100, height, "GENE 1");
 		dna.display();
-		for (let i = 0; i < 1; i++) {
-			op[i] = new lineGraphLib.linegraph(p, p.windowWidth / 2, height, 10, -100, "Bruh");
-			op[i].display();
-			op[i].rollover(p.mouseX, p.mouseY);
-		}
+		let linegraph = new lineGraphLib.linegraph(p, p.windowWidth / 2, height, 10, -100, "Bruh");
+		linegraph.display();
+		linegraph.rollover(p.mouseX, p.mouseY);
+
 
 	};
 

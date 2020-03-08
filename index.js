@@ -91,5 +91,4 @@ app.on('activate', async () => {
 	mainWindow = await createMainWindow();
 
 	const favoriteAnimal = config.get('favoriteAnimal');
-	mainWindow.webContents.executeJavaScript(`document.querySelector('header p').textContent = 'Your favorite animal is ${favoriteAnimal}'`);
 })();

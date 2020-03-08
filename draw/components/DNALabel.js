@@ -14,7 +14,7 @@ class DNALabel {
 		this.p.fill(this.p.color(117, 218, 173));
 		this.p.text(this.label, this.x, this.y);
 		let height = this.p.windowHeight - (this.p.windowHeight / 4);
-		this.p.stroke(this.p.color(117, 218, 173))
+		this.p.stroke(this.p.color(117, 218, 173));
 		this.p.line(this.x, height + 20, this.x + 100, height + 20);
 	}
 }
