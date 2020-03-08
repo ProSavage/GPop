@@ -4,7 +4,7 @@ const { getFillColor } = require('./draw/colorController');
 // import LineGraph from "./components/LineGraph";
 const lineGraphLib = require('./draw/components/LineGraph');
 const dnaLabelLib = require('./draw/components/DNALabel');
-
+const gapLabelLib = require('./draw/components/GapLabel');
 
 
 // This file is required by the index.html file and will
@@ -48,14 +48,12 @@ const bar_width = 10
 		];
 		let dna = new dnaLabelLib.dnalabel(p, p.windowWidth / 2 + 100, height, 12*bar_width, "GENE 1");
 		dna.display();
+		let gap = new gapLabelLib.gaplabel(p, p.windowWidth / 2 - 100, height, 2*bar_width, "12345", "13456");
+		gap.display();
 		let linegraph = new lineGraphLib.linegraph(p, p.windowWidth / 2, height, bar_width, variants);
 		linegraph.rollover(p.mouseX, p.mouseY);
 		linegraph.display();
-
-
 	};
-
-
 
 	p.windowResized = () => {
 		p.resizeCanvas(p.windowWidth, p.windowHeight);
