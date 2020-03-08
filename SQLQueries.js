@@ -17,6 +17,7 @@ const sqlite3 = require("sqlite3").verbose();
 let database = new sqlite3.Database("./resources/pop.sqlite")
 
 function makePromise(query) {
+	console.log(query);
 	return new Promise((resolve, reject) => {
 		database.all(query, [], (error, rows) => {
 			if (error) {
@@ -29,43 +30,43 @@ function makePromise(query) {
 }
 
 module.exports = {
-	getChromosomes: function getChromosomes() {
+	getAllChromosomes: function getAllChromosomes() {
 		let query = "SELECT id, name, size FROM chromosome ORDER BY name;";
 		return makePromise(query);
 	},
 
-	getExons: function getExons() {
+	getAllExons: function getAllExons() {
 		let query = "SELECT id, chromosome_id, start_position, end_position FROM exon " +
 		            " ORDER BY start_position;";
 		return makePromise(query);
 	},
 
-	getExons: function getExons(chromosome_id) {
+	getExonsByChromosome: function getExonsByChromosome(chromosome_id) {
 		let query = "SELECT id, start_position, end_position FROM exon " +
 			        "WHERE chromosome_id = " + chromosome_id + " ORDER BY start_position;";
 		return makePromise(query);
 	},
 
-	getExons: function getExons(chromosome_id, start_position) {
+	getExonsByChromosomeAndStartPosition: function getExonsByChromosomeAndStartPosition(chromosome_id, start_position) {
 		let query = "SELECT id, end_position FROM exon " +
 			         "WHERE chromosome_id = " + chromosome_id +
 			         "  AND start_position = " + start_position + " ORDER BY start_position;";
 		return makePromise(query);
 	},
 
-	getGenes: function getGenes() {
+	getAllGenes: function getAllGenes() {
 		let query =  "SELECT id, chromosome_id, name, start_position, end_position " +
 			         " FROM gene ORDER BY start_position;";
 		return makePromise(query);
 	},
 
-	getGenes: function getGenes(chromosome_id) {
+	getGenesByChromosome: function getGenesByChromosome(chromosome_id) {
 		let query = "SELECT id, name, start_position, end_position FROM gene " +
 			        " WHERE chromosome_id  = " + chromosome_id + " ORDER BY start_position;";
-		return makePromise(query)
+		return makePromise(query);
 	},
 
-	getGenes: function getGenes(chromosome_id, start_position) {
+	getGenesByChromosomeAndStartPosition: function getGenesByChromosomeAndStartPosition(chromosome_id, start_position) {
 		let query = "SELECT  id, name, end_position FROM gene WHERE chromosome_id = " +
 			        chromosome_id + " AND start_position = " + start_position +
 			        " ORDER  BY start_position;"
