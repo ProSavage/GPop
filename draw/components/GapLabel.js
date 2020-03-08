@@ -13,17 +13,16 @@ class GapLabel {
 		this.p.stroke(0);
 		this.p.strokeWeight(1.2);
 		this.p.fill(this.p.color(117, 218, 173));
-		this.p.text(this.start, this.x, this.y);
-		let height = this.p.windowHeight - (this.p.windowHeight / 4);
-		this.p.stroke(this.p.color(117, 218, 173));
-		this.p.line(this.x + this.width, height + 20, this.x + this.width, height + 30);
-		this.p.stroke(this.p.color(100, 230, 153));
-		this.p.text(this.end, this.x + this.width, height + 60);
 
 		this.p.stroke(this.p.color(117, 218, 173));
-		this.p.line(this.x, height + 20, this.x, height + 30);
+		this.p.line(this.x, this.height + 30, this.x, this.height + 40);
 		this.p.stroke(this.p.color(100, 230, 153));
-		this.p.text(this.start, this.x, height + 45);
+		this.p.text(this.start, this.x, this.height + 50);
+
+		this.p.stroke(this.p.color(117, 218, 173));
+		this.p.line(this.x + this.width, this.height + 30, this.x + this.width, this.height + 40);
+		this.p.stroke(this.p.color(100, 230, 153));
+		this.p.text(this.end, this.x + this.width, this.height + 60);
 	}
 }
 module.exports = {
