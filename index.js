@@ -89,6 +89,5 @@ app.on('activate', async () => {
 	await app.whenReady();
 	Menu.setApplicationMenu(menu);
 	mainWindow = await createMainWindow();
-
 	const favoriteAnimal = config.get('favoriteAnimal');
 })();

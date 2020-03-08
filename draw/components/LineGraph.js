@@ -13,7 +13,7 @@ class LineGraph {
 
 	// Check if mouse is over the bubble
 	rollover(px, py) {
-		this.over = true
+		this.over = px > this.x && px < this.x + this.width
 	}
 
 	// Display the Bubble
@@ -23,9 +23,8 @@ class LineGraph {
 		this.p.fill(this.p.color(255, 182, 185));
 		this.p.rect(this.x, this.y, this.width, this.height);
 		if (this.over) {
-			console.log("big bruh")
 			this.p.fill(0);
-			this.p.rect(this.x, this.y, 100, 100)
+			this.p.rect(this.x, this.y, 10, 100)
 			this.p.text(this.name, this.x, this.y + this.radius + 20);
 		}
 	}

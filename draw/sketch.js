@@ -42,8 +42,8 @@ const sketch = (p) => {
 		let dna = new dnaLabelLib.dnalabel(p, p.windowWidth / 2 + 100, height, "GENE 1");
 		dna.display();
 		let linegraph = new lineGraphLib.linegraph(p, p.windowWidth / 2, height, 10, -100, "Bruh");
-		linegraph.display();
 		linegraph.rollover(p.mouseX, p.mouseY);
+		linegraph.display();
 
 
 	};
