@@ -1,0 +1,63 @@
+CREATE TABLE sample (
+   id INTEGER PRIMARY KEY NOT NULL,
+   name TEXT,
+   mother_sample_id INTEGER,
+   father_sample_id INTEGER,
+   FOREIGN KEY(mother_sample_id) REFERENCES sample(id),
+   FOREIGN KEY(father_sample_id) REFERENCES sample(id)
+);
+
+CREATE TABLE chromosome (
+   id INTEGER PRIMARY KEY NOT NULL,
+   name TEXT,
+   size INTEGER
+);
+
+CREATE TABLE exon (
+   id INTEGER PRIMARY KEY NOT NULL,
+   chromosome_id INTEGER,
+   start_position INTEGER NOT NULL,
+   end_position INTEGER,
+   FOREIGN KEY(chromosome_id) REFERENCES chromosome(id)
+);
+
+CREATE INDEX exon_start_position ON exon(start_position);
+
+CREATE TABLE gene (
+   id INTEGER PRIMARY KEY NOT NULL,
+   chromosome_id INTEGER,
+   start_position INTEGER NOT NULL,
+   end_position INTEGER,
+   name TEXT,
+   FOREIGN KEY(chromosome_id) REFERENCES chromosome(id)
+);
+
+CREATE INDEX gene_start_position ON gene(start_position);
+
+CREATE TABLE short_variant (
+   id INTEGER PRIMARY KEY NOT NULL,
+   sample_id INTEGER,
+   chromosome_id INTEGER,
+   start_position INTEGER NOT NULL,
+   end_position INTEGER,
+   reference_sequence TEXT,
+   reference_read_count INTEGER,
+   variant_sequence TEXT,
+   variant_read_count INTEGER,
+   FOREIGN KEY(sample_id) REFERENCES sample(id),
+   FOREIGN KEY(chromosome_id) REFERENCES chromosome(id)
+);
+
+CREATE TABLE copy_number_variant (
+   id INTEGER PRIMARY KEY NOT NULL,
+   sample_id INTEGER,
+   chromosome_id INTEGER,
+   start_position INTEGER,
+   reference_copy_count INTEGER,
+   variant_copy_count INTEGER,
+   FOREIGN KEY(sample_id) REFERENCES sample(id),
+   FOREIGN KEY(chromosome_id) REFERENCES chromosome(id)
+);
+
+
+  
