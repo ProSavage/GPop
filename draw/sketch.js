@@ -17,9 +17,11 @@ const p5 = require('p5');
 //Imports our custom function to decide what color the fill shall be.
 
 console.log('logging')
+const bar_width = 10
+
 //Starting out sketch and
 //injecting p5, as the param p, into our sketch function.
-const sketch = (p) => {
+  const sketch = (p) => {
 
 
 	let op = "bruh";
@@ -39,14 +41,14 @@ const sketch = (p) => {
 		p.strokeWeight(25);
 		p.stroke(p.color(190,235, 233));
 		p.line(0, height, 2000, height);
-		let dna = new dnaLabelLib.dnalabel(p, p.windowWidth / 2 + 100, height, "GENE 1");
-		dna.display();
 		var variants = [
 			{ height: -30, name: "3" },
 			{ height: -56, name: "5" },
 			{ height: -12, name: "6" }
 		];
-		let linegraph = new lineGraphLib.linegraph(p, p.windowWidth / 2, height, 10, variants);
+		let dna = new dnaLabelLib.dnalabel(p, p.windowWidth / 2 + 100, height, 12*bar_width, "GENE 1");
+		dna.display();
+		let linegraph = new lineGraphLib.linegraph(p, p.windowWidth / 2, height, bar_width, variants);
 		linegraph.rollover(p.mouseX, p.mouseY);
 		linegraph.display();
 
