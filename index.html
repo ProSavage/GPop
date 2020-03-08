@@ -7,10 +7,172 @@
 		<script src="./draw/sketch.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
-		<div class="container">
-			<header>
-				<p></p>
-			</header>
+		<div class="boxed">
+			<div class="boxedLeft">
+				ID: HG001
+			</div>
+			<div class="boxedRight">
+				Chromosome: chr1
+			</div>
+		</div>
+		<div class="column">
+			<div class="legend">
+				<div onclick="events()" id = "legendOne" class="legendCircle">
+					<div  class="legendCircleFirst">
+						<p id = "legendTwo">i</p>
+					</div>
+					<div class="legendCircleSecond">
+						<h1 id = "legendThree">Legend</h1>
+					</div>
+				</div>
+			</div>
+			<div class="btn-group">
+				<div class="boxCircle">
+					<img src="./images/helix.png"/>
+				</div>
+				<div class="buttonBruh">
+					<button>GENE</button>
+				</div>
+				<div class="boxCircle2">
+					<img src="./images/filter.png"/>
+				</div>
+				<button id="myBtn">FILTER</button>
+				<div class="boxCircle">
+					<img src="./images/folder.png"/>
+				</div>
+				<button>OPEN</button>
+				<div class="boxCircle2">
+					<img src="./images/zoom.png"/>
+				</div>
+				<button id = "zoomButton">ZOOM</button>
+				<div class="boxCircle">
+					<img src="./images/save.png"/>
+				</div>
+				<button>SAVE</button>
+				<div id="myModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2>Check the following filter options</h2>
+						<div>
+							<h1 style = "display: inline; padding-right: 50px;">Copied Number Variance</h1>
+							<input  style = "display: inline" type="checkbox" id="myCheck"  onclick="checkBoxFunction()">
+						</div>
+						<div>
+							<h1 style = "display: inline; padding-right: 193.5px;">Short Variance</h1>
+							<input style = "display: inline;" type="checkbox" id="myCheck2"  onclick="checkBoxFunction()">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="myModal1" class="modal">
+				<div class="modal-content1">
+					<h2>Zoom In or Out</h2>
+					<div>
+						<button  style = "display: inline" id="zoomIn"  onclick="zoomFunction()">
+							Zoom In
+						</button>
+					</div>
+					<div>
+						<button style = "display: inline;" id="zoomOut"  onclick="zoomFunction()">
+							Zoom Out
+						</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
+	<script>
+		let count = 0;
+		let events = () => {
+			if (count % 2 !== 0) {
+				document.getElementById("legendOne").classList.remove("legendCircleAnimation");
+				document.getElementById("legendOne").classList.toggle("reverseLegendCircleAnimation");
+				document.getElementById("legendTwo").style.display = "flex";
+				document.getElementById("legendThree").style.display = "none";
+				count++
+			}
+			else {
+				document.getElementById("legendOne").classList.remove("reverseLegendCircleAnimation");
+				document.getElementById("legendOne").classList.toggle("legendCircleAnimation");
+				document.getElementById("legendThree").style.display = "flex";
+				document.getElementById("legendTwo").style.display = "none";
+				count++;
+			}
+		}
+	</script>
+	<script>
+		// Get the modal
+		let modal = document.getElementById("myModal");
+
+		// Get the button that opens the modal
+		let btn = document.getElementById("myBtn");
+
+		// Get the <span> element that closes the modal
+		let span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks the button, open the modal
+		btn.onclick = function() {
+			modal.style.display = "block";
+		};
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		};
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target === modal) {
+				modal.style.display = "none";
+			}
+		};
+	</script>
+	<script>
+		window.onscroll = function() {
+			console.log("BRUH")
+		};
+		let modal1 = document.getElementById("myModal1");
+
+		// Get the button that opens the modal
+		let btn1 = document.getElementById("zoomButton");
+		btn1.onclick = function() {
+			modal1.style.display = "block";
+		};
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target === modal1) {
+				modal1.style.display = "none";
+			}
+		};
+		let zoomFunction = () => {
+			let zoomIn = document.getElementById("zoomIn");
+			let zoomOut = document.getElementById("zoomIn");
+			zoomIn.onclick = function () {
+				window.alert("1");
+			};
+			zoomOut.onclick = function () {
+				window.alert("2");
+			}
+		};
+		let checkBoxFunction = () => {
+			let checkBox1 = document.getElementById("myCheck");
+			let checkBox2 = document.getElementById("myCheck2");
+			//if none are checked
+			if (checkBox1.checked !== true && checkBox2.checked !== true) {
+				alert("you pressed none")
+			}
+			//if box one is checked only
+			if (checkBox1.checked === true && checkBox2.checked !== true) {
+				alert("you pressed one")
+			}
+			//if box two is checked only
+			else if (checkBox2.checked === true && checkBox1.checked !== true) {
+				alert("you pressed two")
+			}
+			//if both boxes are checked
+			else if (checkBox2.checked === true && checkBox1.checked === true) {
+				alert("you pressed all")
+			}
+		}
+	</script>
 </html>

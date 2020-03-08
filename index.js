@@ -1,4 +1,4 @@
-'use strict';
+	'use strict';
 const path = require('path');
 const {app, BrowserWindow, Menu} = require('electron');
 /// const {autoUpdater} = require('electron-updater');
@@ -34,8 +34,8 @@ const createMainWindow = async () => {
 	const win = new BrowserWindow({
 		title: app.name,
 		show: false,
-		width: 600,
-		height: 400,
+		width: 1920,
+		height: 1080,
 
 		//The lines below solved the issue
 		webPreferences: {
@@ -89,7 +89,5 @@ app.on('activate', async () => {
 	await app.whenReady();
 	Menu.setApplicationMenu(menu);
 	mainWindow = await createMainWindow();
-
 	const favoriteAnimal = config.get('favoriteAnimal');
-	mainWindow.webContents.executeJavaScript(`document.querySelector('header p').textContent = 'Your favorite animal is ${favoriteAnimal}'`);
 })();
